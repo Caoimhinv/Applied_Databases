@@ -1,0 +1,20 @@
+MATCH (n) DETACH DELETE(n);
+
+CREATE(e:Employee{eid:"E01"});
+CREATE(e:Employee{eid:"E05"});
+
+CREATE(d:Department{did:"HR"});
+CREATE(d:Department{did:"R&D"});
+CREATE(d:Department{did:"SHIP1"});
+
+MATCH(e{eid:"E01"})
+MATCH(d1{did:"SHIP1"})
+CREATE(e)-[:MANAGES]->(d1);
+
+MATCH(e{eid:"E01"})
+MATCH(d1{did:"R&D"})
+CREATE(e)-[:MANAGES]->(d1);
+
+MATCH(e{eid:"E05"})
+MATCH(d1{did:"HR"})
+CREATE(e)-[:MANAGES]->(d1)

@@ -1,0 +1,2 @@
+OPTIONAL MATCH (p:Person{age:54})
+RETURN Distinct p IS NOT NULL AS Aged54

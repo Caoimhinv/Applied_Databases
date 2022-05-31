@@ -1,0 +1,7 @@
+MATCH (p1:Person)-[pl1:PLAYS|HAS_HOBBY]->()
+WITH p1, count(*) AS h
+CALL {MATCH (p2:Person{name:"Barry Taylor"})-[pl2:PLAYS|HAS_HOBBY]->()
+WITH p2, count(*) AS y RETURN y}
+WITH * WHERE h > y
+RETURN p1.name AS People, h as Interests
+ORDER BY h desc, p1.name desc

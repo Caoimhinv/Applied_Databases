@@ -1,0 +1,272 @@
+MATCH(n) DETACH DELETE n;
+
+CREATE(p:Person{name:"Damien Jones"});
+CREATE(p:Person{name:"Denise Jones"});
+
+create(p:Person{name:"Will Jones",age:75});
+create(p:Person{name:"Bridget Jones",age:71});
+
+create(p:Person{name:"John Smith",age:54,salary:59992.32});
+create(p:Person{name:"Anne Smith",age:54,salary:59992.32});
+
+create(p:Person{name:"Ann Smith",age:19});
+create(p:Person{name:"Tom Smith",age:23,salary:23999.34});
+create(p:Person{name:"Barbara Smith",age:21,salary:29000.00});
+
+
+create(p:Person{name:"Chloe Taylor",age:50,salary:54000.02});
+create(p:Person{name:"Johnathon Taylor",age:52,salary:53000.98});
+
+create(p:Person{name:"John Taylor",age:25,salary:28044.98});
+create(p:Person{name:"Barry Taylor",age:24});
+
+create(p:Person{name:"Noel Jones",age:81});
+
+create(p:Person{name:"Noel Jones",age:50,salary:62001.01});
+create(p:Person{name:"Mary Jones",age:48,salary:49800.20});
+
+create(p:Person{name:"Paul Jones",age:15});
+create(p:Person{name:"Sarah Jones",age:11});
+
+CREATE(s:Sport{name:"Football"});
+CREATE(s:Sport{name:"Soccer"});
+CREATE(s:Sport{name:"Tennis"});
+CREATE(i:Instrument{name:"Guitar"});
+CREATE(i:Instrument{name:"Banjo"});
+CREATE(i:Instrument{name:"Drums"});
+CREATE(i:Instrument{name:"Accordion"});
+CREATE(h:Hobby{name:"Cinema"});
+CREATE(h:Hobby{name:"Reading"});
+CREATE(h:Hobby{name:"Cooking"});
+CREATE(h:Hobby{name:"Painting"});
+
+MATCH(p:Person{name:"Will Jones",age:75})
+MATCH(h:Hobby{name:"Painting"})
+CREATE(p)-[:HAS_HOBBY]->(h);
+
+MATCH(p:Person{name:"Will Jones",age:75})
+MATCH(h:Hobby{name:"Reading"})
+CREATE(p)-[:HAS_HOBBY]->(h);
+
+MATCH(p:Person{name:"Bridget Jones",age:71})
+MATCH(h:Hobby{name:"Reading"})
+CREATE(p)-[:HAS_HOBBY]->(h);
+
+MATCH(p:Person{name:"Ann Smith",age:19})
+MATCH(h:Hobby{name:"Reading"})
+CREATE(p)-[:HAS_HOBBY]->(h);
+
+MATCH(p:Person{name:"Ann Smith",age:19})
+MATCH(h:Hobby{name:"Cooking"})
+CREATE(p)-[:HAS_HOBBY]->(h);
+
+MATCH(p:Person{name:"Mary Jones",age:48,salary:49800.20})
+MATCH(h:Hobby{name:"Cooking"})
+CREATE(p)-[:HAS_HOBBY]->(h);
+
+MATCH(p:Person{name:"Mary Jones",age:48,salary:49800.20})
+MATCH(h:Hobby{name:"Cinema"})
+CREATE(p)-[:HAS_HOBBY]->(h);
+
+MATCH(p:Person{name:"Mary Jones",age:48,salary:49800.20})
+MATCH(h:Hobby{name:"Painting"})
+CREATE(p)-[:HAS_HOBBY]->(h);
+
+MATCH(p:Person{name:"Paul Jones",age:15})
+MATCH(h:Hobby{name:"Reading"})
+CREATE(p)-[:HAS_HOBBY]->(h);
+
+MATCH(p:Person{name:"John Taylor",age:25,salary:28044.98})
+MATCH(h:Hobby{name:"Reading"})
+CREATE(p)-[:HAS_HOBBY]->(h);
+
+MATCH(p:Person{name:"John Taylor",age:25,salary:28044.98})
+MATCH(h:Hobby{name:"Cooking"})
+CREATE(p)-[:HAS_HOBBY]->(h);
+
+MATCH(p:Person{name:"Barbara Smith",age:21,salary:29000.00})
+MATCH(h:Hobby{name:"Cooking"})
+CREATE(p)-[:HAS_HOBBY]->(h);
+
+MATCH(p:Person{name:"John Smith",age:54,salary:59992.32})
+MATCH(i:Instrument{name:"Guitar"})
+CREATE(p)-[:PLAYS]->(i);
+
+MATCH(p:Person{name:"John Taylor",age:25,salary:28044.98})
+MATCH(i:Instrument{name:"Guitar"})
+CREATE(p)-[:PLAYS]->(i);
+
+MATCH(p:Person{name:"Barry Taylor",age:24})
+MATCH(i:Instrument{name:"Guitar"})
+CREATE(p)-[:PLAYS]->(i);
+
+MATCH(p:Person{name:"John Smith",age:54,salary:59992.32})
+MATCH(i:Instrument{name:"Banjo"})
+CREATE(p)-[:PLAYS]->(i);
+
+MATCH(p:Person{name:"Paul Jones",age:15})
+MATCH(i:Instrument{name:"Drums"})
+CREATE(p)-[:PLAYS]->(i);
+
+MATCH(p:Person{name:"Noel Jones",age:81})
+MATCH(i:Instrument{name:"Accordion"})
+CREATE(p)-[:PLAYS]->(i);
+
+MATCH(p:Person{name:"Chloe Taylor",age:50,salary:54000.02})
+MATCH(i:Instrument{name:"Accordion"})
+CREATE(p)-[:PLAYS]->(i);
+
+MATCH(p:Person{name:"Paul Jones",age:15})
+MATCH(s:Sport{name:"Soccer"})
+CREATE(p)-[:PLAYS{position:"Forward"}]->(s);
+
+MATCH(p:Person{name:"Paul Jones",age:15})
+MATCH(s:Sport{name:"Football"})
+CREATE(p)-[:PLAYS{position:"Forward"}]->(s);
+
+MATCH(p:Person{name:"Sarah Jones",age:11})
+MATCH(s:Sport{name:"Soccer"})
+CREATE(p)-[:PLAYS{position:"Midfield"}]->(s);
+
+MATCH(p:Person{name:"Sarah Jones",age:11})
+MATCH(s:Sport{name:"Football"})
+CREATE(p)-[:PLAYS{position:"Midfield"}]->(s);
+
+MATCH(p:Person{name:"Noel Jones",age:50,salary:62001.01})
+MATCH(s:Sport{name:"Tennis"})
+CREATE(p)-[:PLAYS]->(s);
+
+MATCH(p:Person{name:"Johnathon Taylor",age:52,salary:53000.98})
+MATCH(s:Sport{name:"Tennis"})
+CREATE(p)-[:PLAYS]->(s);
+
+MATCH(p:Person{name:"Bridget Jones",age:71})
+MATCH(s:Sport{name:"Tennis"})
+CREATE(p)-[:PLAYS]->(s);
+
+MATCH(p:Person{name:"Barry Taylor",age:24})
+MATCH(s:Sport{name:"Soccer"})
+CREATE(p)-[:PLAYS{position:"Midfield"}]->(s);
+
+MATCH(p:Person{name:"John Smith",age:54,salary:59992.32})
+MATCH(s:Sport{name:"Soccer"})
+CREATE(p)-[:PLAYS{position:"Midfield"}]->(s);
+
+MATCH(p:Person{name:"Damien Jones"})
+MATCH(p1:Person{name:"Denise Jones"})
+CREATE(p)-[:MARRIED_TO]->(p1);
+
+
+MATCH(p:Person{name:"Will Jones",age:75})
+MATCH(p1:Person{name:"Damien Jones"})
+CREATE(p1)-[:FATHER_OF]->(p);
+
+MATCH(p:Person{name:"Will Jones",age:75})
+MATCH(p1:Person{name:"Denise Jones"})
+CREATE(p1)-[:MOTHER_OF]->(p);
+
+MATCH(p:Person{name:"Noel Jones",age:81})
+MATCH(p1:Person{name:"Damien Jones"})
+CREATE(p1)-[:FATHER_OF]->(p);
+
+MATCH(p:Person{name:"Noel Jones",age:81})
+MATCH(p1:Person{name:"Denise Jones"})
+CREATE(p1)-[:MOTHER_OF]->(p);
+
+
+MATCH(p:Person{name:"Noel Jones",age:50,salary:62001.01})
+MATCH(p1:Person{name:"Noel Jones",age:81})
+CREATE(p1)-[:FATHER_OF]->(p);
+
+MATCH(p:Person{name:"Noel Jones",age:50,salary:62001.01})
+MATCH(p1:Person{name:"Mary Jones",age:48,salary:49800.20})
+CREATE(p)-[:MARRIED_TO]->(p1);
+
+MATCH(p:Person{name:"Paul Jones",age:15})
+MATCH(p1:Person{name:"Noel Jones",age:50,salary:62001.01})
+CREATE(p1)-[:FATHER_OF]->(p);
+
+MATCH(p:Person{name:"Sarah Jones",age:11})
+MATCH(p1:Person{name:"Noel Jones",age:50,salary:62001.01})
+CREATE(p1)-[:FATHER_OF]->(p);
+
+MATCH(p:Person{name:"Paul Jones",age:15})
+MATCH(p1:Person{name:"Mary Jones",age:48,salary:49800.20})
+CREATE(p1)-[:MOTHER_OF]->(p);
+
+MATCH(p:Person{name:"Sarah Jones",age:11})
+MATCH(p1:Person{name:"Mary Jones",age:48,salary:49800.20})
+CREATE(p1)-[:MOTHER_OF]->(p);
+
+
+MATCH(p:Person{name:"Chloe Taylor",age:50,salary:54000.02})
+MATCH(p1:Person{name:"Johnathon Taylor",age:52,salary:53000.98})
+CREATE(p)-[:MARRIED_TO]->(p1);
+
+MATCH(p:Person{name:"Chloe Taylor",age:50,salary:54000.02})
+MATCH(p1:Person{name:"Will Jones",age:75})
+CREATE(p1)-[:FATHER_OF]->(p);
+
+MATCH(p:Person{name:"Chloe Taylor",age:50,salary:54000.02})
+MATCH(p1:Person{name:"Bridget Jones",age:71})
+CREATE(p1)-[:MOTHER_OF]->(p);
+
+MATCH(p:Person{name:"John Taylor",age:25,salary:28044.98})
+MATCH(p1:Person{name:"Chloe Taylor",age:50,salary:54000.02})
+CREATE(p1)-[:MOTHER_OF]->(p);
+
+MATCH(p:Person{name:"Barry Taylor",age:24})
+MATCH(p1:Person{name:"Chloe Taylor",age:50,salary:54000.02})
+CREATE(p1)-[:MOTHER_OF]->(p);
+
+MATCH(p:Person{name:"John Taylor",age:25,salary:28044.98})
+MATCH(p1:Person{name:"Johnathon Taylor",age:52,salary:53000.98})
+CREATE(p1)-[:FATHER_OF]->(p);
+
+MATCH(p:Person{name:"Barry Taylor",age:24})
+MATCH(p1:Person{name:"Johnathon Taylor",age:52,salary:53000.98})
+CREATE(p1)-[:FATHER_OF]->(p);
+
+MATCH(p:Person{name:"Will Jones",age:75})
+MATCH(p1:Person{name:"Bridget Jones",age:71})
+CREATE(p)-[:MARRIED_TO]->(p1);
+
+MATCH(p:Person{name:"Anne Smith",age:54,salary:59992.32})
+MATCH(p1:Person{name:"Bridget Jones",age:71})
+CREATE(p1)-[:MOTHER_OF]->(p);
+
+MATCH(p:Person{name:"Anne Smith",age:54,salary:59992.32})
+MATCH(p1:Person{name:"Will Jones",age:75})
+CREATE(p1)-[:FATHER_OF]->(p);
+
+MATCH(p:Person{name:"John Smith",age:54,salary:59992.32})
+MATCH(p1:Person{name:"Anne Smith",age:54,salary:59992.32})
+CREATE(p)-[:MARRIED_TO]->(p1);
+
+MATCH(p:Person{name:"Ann Smith",age:19})
+MATCH(p1:Person{name:"Anne Smith",age:54,salary:59992.32})
+CREATE(p1)-[:MOTHER_OF]->(p);
+
+MATCH(p:Person{name:"Tom Smith",age:23,salary:23999.34})
+MATCH(p1:Person{name:"Anne Smith",age:54,salary:59992.32})
+CREATE(p1)-[:MOTHER_OF]->(p);
+
+MATCH(p:Person{name:"Barbara Smith",age:21,salary:29000.00})
+MATCH(p1:Person{name:"Anne Smith",age:54,salary:59992.32})
+CREATE(p1)-[:MOTHER_OF]->(p);
+
+MATCH(p:Person{name:"Ann Smith",age:19})
+MATCH(p1:Person{name:"John Smith",age:54,salary:59992.32})
+CREATE(p1)-[:FATHER_OF]->(p);
+
+MATCH(p:Person{name:"Tom Smith",age:23,salary:23999.34})
+MATCH(p1:Person{name:"John Smith",age:54,salary:59992.32})
+CREATE(p1)-[:FATHER_OF]->(p);
+
+MATCH(p:Person{name:"Barbara Smith",age:21,salary:29000.00})
+MATCH(p1:Person{name:"John Smith",age:54,salary:59992.32})
+CREATE(p1)-[:FATHER_OF]->(p);
+
+
+
+

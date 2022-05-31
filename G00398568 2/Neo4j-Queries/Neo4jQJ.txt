@@ -1,0 +1,4 @@
+MATCH (p:Person)
+WHERE p.age IS NOT NULL
+RETURN Distinct p.age AS Ages_of_People
+ORDER by p.age

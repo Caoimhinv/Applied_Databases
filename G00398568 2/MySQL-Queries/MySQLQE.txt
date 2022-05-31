@@ -1,0 +1,6 @@
+SELECT c.Name, COUNT(l.language) AS "Number of Languages" FROM countrylanguage l
+INNER JOIN country c
+ON l.CountryCode = c.Code
+WHERE c.Continent = "Africa"
+GROUP BY c.Name
+ORDER BY c.Name;

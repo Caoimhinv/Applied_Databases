@@ -1,0 +1,9 @@
+SELECT s.Name AS Capital, c.Name AS Country, l.Language, l.Percentage
+FROM countrylanguage l
+JOIN country c
+ON l.CountryCode = c.Code
+JOIN city s
+ON c.Capital = s.ID
+WHERE IsOfficial = true
+AND c.Continent = "Europe"
+ORDER BY c.Name, s.Name, l.Language;

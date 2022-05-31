@@ -1,0 +1,5 @@
+MATCH (p:Person)-[:PLAYS]->(i:Instrument{name:"Guitar"}) WITH p AS x
+MATCH (x)-[:PLAYS]->(i1)
+WHERE NOT i1.name = "Guitar"
+RETURN DISTINCT i1.name AS Other_Hobbies
+ORDER BY i1.name

@@ -1,0 +1,7 @@
+SELECT SUM(GNP) AS Total_GNP
+FROM country c
+JOIN city s
+ON c.Code = s.CountryCode
+JOIN hasvisitedcity h
+ON s.ID = h.cityID
+WHERE personID = 1;

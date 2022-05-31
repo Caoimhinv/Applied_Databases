@@ -1,0 +1,11 @@
+SELECT s.Name, s.Population
+FROM city s
+JOIN country c
+ON s.CountryCode = c.Code
+WHERE s.Population > (SELECT AVG(s1.Population) 
+FROM city s1
+JOIN country c2
+ON s1.CountryCode = c2.Code
+WHERE c2.HeadOfState = "Harald V")
+AND c.HeadOfState = "Harald V"
+ORDER BY s.Name, s.Population;

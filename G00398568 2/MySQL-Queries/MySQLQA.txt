@@ -1,0 +1,4 @@
+SELECT Name, LifeExpectancy FROM country
+WHERE LifeExpectancy = (SELECT MAX(LifeExpectancy) FROM country WHERE continent = "North America")
+AND continent = "North America"
+ORDER BY Name;

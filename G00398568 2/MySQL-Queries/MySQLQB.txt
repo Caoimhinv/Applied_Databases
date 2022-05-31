@@ -1,0 +1,5 @@
+SELECT c.Name, FORMAT(c.Population, "N") AS Population, k.Continent from city c
+LEFT JOIN country k
+ON c.CountryCode = k.Code
+WHERE c.Population > 8000000
+ORDER BY c.Population DESC, Name;
